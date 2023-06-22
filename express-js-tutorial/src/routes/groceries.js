@@ -44,19 +44,10 @@ router.get('/cart', (req, res) => {
 });
 
 router.post('/cart/item', (req, res) => {
-    const { item, price } = req.body;
-    const cartItem = { item, price }; 
-    const cart = req.session;
-    console.log(req.session);
-    if (cart){
-        req.session.cart.items.push(cartItem);
-    }
-    else {
-        req.session.cart = {
-            items: [cartItem],
-        };
-    }
-    res.sendStatus(201);
+   let data = req.body;
+   console.log("item: " + data.item);
+   
+   res.send(`Adding ${data.item} to the grocery options`);
 })
 
 router.post('/', (req, res) => {
